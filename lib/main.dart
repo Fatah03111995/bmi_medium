@@ -1,4 +1,5 @@
 import 'package:bmi_medium/pages/home_page.dart';
+import 'package:bmi_medium/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,9 +16,10 @@ class MainApp extends StatelessWidget {
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
     );
 
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: MyTheme().theme,
+      home: const HomePage(),
     );
   }
 }
