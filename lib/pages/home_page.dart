@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+const double bottomContainerHeight = 80.0;
+const Color darkPurple = Color(0XFF1D1E33);
+const Color darkPink = Color(0xffeb1555);
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,27 +21,79 @@ class _HomePage extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: Row(
               children: [
-                Box(),
-                Box(),
+                Box(
+                  color: darkPurple,
+                  boxChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.mars,
+                        color: Colors.white,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'MALE',
+                      )
+                    ],
+                  ),
+                ),
+                Box(
+                  color: darkPurple,
+                  boxChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.venus,
+                        color: Colors.white,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'FEMALE',
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-          Expanded(
-            child: Box(),
+          const Expanded(
+            child: Box(
+              color: darkPurple,
+              boxChild: null,
+            ),
           ),
-          Expanded(
+          const Expanded(
             child: Row(
               children: [
-                Box(),
-                Box(),
+                Box(
+                  color: darkPurple,
+                  boxChild: null,
+                ),
+                Box(
+                  color: darkPurple,
+                  boxChild: null,
+                ),
               ],
             ),
           ),
+          Container(
+            height: bottomContainerHeight,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              color: darkPink,
+            ),
+          )
         ],
       ),
     );
@@ -44,17 +101,21 @@ class _HomePage extends State<HomePage> {
 }
 
 class Box extends StatelessWidget {
-  const Box({
-    super.key,
-  });
+  final Color color;
+  final Widget? boxChild;
+
+  const Box({super.key, required this.color, this.boxChild});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Color(0xFF1D1E33),
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: color,
+        ),
+        child: boxChild,
       ),
     );
   }
