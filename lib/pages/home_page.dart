@@ -1,3 +1,5 @@
+import 'package:bmi_medium/components/box.dart';
+import 'package:bmi_medium/components/icon_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -28,40 +30,16 @@ class _HomePage extends State<HomePage> {
               children: [
                 Box(
                   color: darkPurple,
-                  boxChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.mars,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'MALE',
-                      )
-                    ],
+                  boxChild: IconText(
+                    icon: FontAwesomeIcons.mars,
+                    txt: 'MALE',
                   ),
                 ),
                 Box(
                   color: darkPurple,
-                  boxChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.venus,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'FEMALE',
-                      )
-                    ],
+                  boxChild: IconText(
+                    icon: FontAwesomeIcons.venus,
+                    txt: 'FEMALE',
                   ),
                 ),
               ],
@@ -95,27 +73,6 @@ class _HomePage extends State<HomePage> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class Box extends StatelessWidget {
-  final Color color;
-  final Widget? boxChild;
-
-  const Box({super.key, required this.color, this.boxChild});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: color,
-        ),
-        child: boxChild,
       ),
     );
   }
