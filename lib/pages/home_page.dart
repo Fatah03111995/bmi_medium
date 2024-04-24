@@ -1,10 +1,10 @@
 import 'package:bmi_medium/components/box.dart';
 import 'package:bmi_medium/components/icon_text.dart';
 import 'package:bmi_medium/constants/color.dart';
+import 'package:bmi_medium/constants/gender.dart';
+import 'package:bmi_medium/theme/gender_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-enum Gender { male, female }
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,20 +13,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  Color activeButtonMale = blue;
-  Color activeButtonFemale = darkPink;
-  Color inActiveButton = purple;
-  Gender? isActive;
+  Gender? genderActive;
   double heightBody = 0;
 
   void buttonActive(Gender gender) {
     setState(() {
-      isActive = gender;
+      genderActive = gender;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    GenderTheme genderTheme = GenderTheme(genderActive);
+    Color primaryColor = genderTheme.color.primaryColor;
+    Color secondaryColor = genderTheme.color.secondaryColor;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -41,9 +42,7 @@ class _HomePage extends State<HomePage> {
             child: Row(
               children: [
                 Box(
-                  color: isActive == Gender.male
-                      ? activeButtonMale
-                      : inActiveButton,
+                  color: genderActive == Gender.male ? primaryColor : purple,
                   boxChild: IconText(
                     onTap: () {
                       buttonActive(Gender.male);
@@ -53,9 +52,7 @@ class _HomePage extends State<HomePage> {
                   ),
                 ),
                 Box(
-                  color: isActive == Gender.female
-                      ? activeButtonFemale
-                      : inActiveButton,
+                  color: genderActive == Gender.female ? primaryColor : purple,
                   boxChild: IconText(
                     onTap: () {
                       buttonActive(Gender.female);
@@ -83,7 +80,8 @@ class _HomePage extends State<HomePage> {
                     children: [
                       Text(
                         heightBody.toString(),
-                        style: const TextStyle(fontWeight: FontWeight.w800),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w900),
                       ),
                       const Text(' cm')
                     ],
@@ -93,8 +91,8 @@ class _HomePage extends State<HomePage> {
                       min: 0,
                       max: 200,
                       divisions: 200,
-                      activeColor: lightPink,
-                      thumbColor: darkPink,
+                      activeColor: secondaryColor,
+                      thumbColor: primaryColor,
                       onChanged: (double newVal) {
                         setState(() {
                           heightBody = newVal.roundToDouble();
@@ -121,8 +119,8 @@ class _HomePage extends State<HomePage> {
           Container(
             height: 80.0,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              color: darkPink,
+            decoration: BoxDecoration(
+              color: primaryColor,
             ),
           )
         ],
