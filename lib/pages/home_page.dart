@@ -137,7 +137,9 @@ class _HomePage extends State<HomePage> {
                           const SizedBox(width: 10),
                           RoundButton(
                             onTap: () {
-                              weightBody--;
+                              setState(() {
+                                weightBody--;
+                              });
                             },
                             icon: FontAwesomeIcons.minus,
                             colorIcon: primaryColor,
