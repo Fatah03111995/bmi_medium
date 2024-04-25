@@ -1,7 +1,9 @@
 import 'package:bmi_medium/components/box.dart';
 import 'package:bmi_medium/components/icon_text.dart';
+import 'package:bmi_medium/components/round_button.dart';
 import 'package:bmi_medium/constants/color.dart';
 import 'package:bmi_medium/constants/gender.dart';
+import 'package:bmi_medium/constants/style.dart';
 import 'package:bmi_medium/theme/gender_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +17,8 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
   Gender? genderActive;
   double heightBody = 0;
+  int weightBody = 50;
+  int age = 30;
 
   void buttonActive(Gender gender) {
     setState(() {
@@ -77,11 +81,12 @@ class _HomePage extends State<HomePage> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
                         heightBody.toString(),
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w900),
+                        style: valTxtStyle,
                       ),
                       const Text(' cm')
                     ],
@@ -102,17 +107,84 @@ class _HomePage extends State<HomePage> {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Row(
               children: [
                 Box(
                   color: purple,
-                  boxChild: null,
+                  boxChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text('WEIGHT'),
+                      Text(
+                        weightBody.toString(),
+                        style: valTxtStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RoundButton(
+                            onTap: () {
+                              setState(() {
+                                weightBody++;
+                              });
+                            },
+                            icon: FontAwesomeIcons.plus,
+                            colorIcon: primaryColor,
+                          ),
+                          const SizedBox(width: 10),
+                          RoundButton(
+                            onTap: () {
+                              weightBody--;
+                            },
+                            icon: FontAwesomeIcons.minus,
+                            colorIcon: primaryColor,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Box(
-                  color: purple,
-                  boxChild: null,
-                ),
+                    color: purple,
+                    boxChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text('AGE'),
+                        Text(
+                          age.toString(),
+                          style: valTxtStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            RoundButton(
+                              onTap: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              icon: FontAwesomeIcons.plus,
+                              colorIcon: primaryColor,
+                            ),
+                            const SizedBox(width: 10),
+                            RoundButton(
+                              onTap: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                              colorIcon: primaryColor,
+                            ),
+                          ],
+                        )
+                      ],
+                    )),
               ],
             ),
           ),
