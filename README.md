@@ -2,7 +2,10 @@
 Body Mass Index Calculator
 Simple Apps
 
-A new Flutter project.
-![Screenshot_2024-06-06-09-13-10-570_com example bmi_medium](https://github.com/Fatah03111995/bmi_medium/assets/103168830/1e022f61-2147-4cf5-97e0-1958c4cf7b13)
-![Screenshot_2024-06-06-09-13-28-488_com example bmi_medium](https://github.com/Fatah03111995/bmi_medium/assets/103168830/67dd3515-e786-4d54-b455-7e8bc5b4a4d6)
-![Screenshot_2024-06-06-09-13-25-535_com example bmi_medium](https://github.com/Fatah03111995/bmi_medium/assets/103168830/59b67d4f-7c16-4057-8bdf-731cd5654f1e)
+![image](https://github.com/Fatah03111995/bmi_medium/assets/103168830/f23757d3-3927-45e5-9b8d-b163bdc03e96)
+![image](https://github.com/Fatah03111995/bmi_medium/assets/103168830/25b6edd8-0d2b-42b6-84dc-8cdceca7ed3e)
+![image](https://github.com/Fatah03111995/bmi_medium/assets/103168830/72ac1331-4315-44af-acc5-fc1925e16940)
+
+
+
+
